@@ -30,10 +30,10 @@
 .hero-copy {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   min-height: 700px;
   padding-top: 26px;
-  gap: 32px;
+  gap: 24px;
 }
 
 .hero-copy__top {
@@ -56,14 +56,6 @@
   gap: 14px;
 }
 
-.hero-thumbnails {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 22px;
-  max-width: 420px;
-  margin-top: auto;
-}
-
 .image-card {
   overflow: hidden;
   border-radius: 28px;
@@ -80,10 +72,6 @@
 .image-card--hero {
   height: 700px;
   min-height: 700px;
-}
-
-.image-card--small {
-  aspect-ratio: 0.88;
 }
 
 .about-page {
@@ -425,7 +413,6 @@
     padding: 38px 0;
   }
 
-  .hero-thumbnails,
   .stats-grid,
   .about-values-grid,
   .about-network-list {
@@ -453,10 +440,6 @@
 }
 
 @media (max-width: 620px) {
-  .hero-thumbnails {
-    grid-template-columns: 1fr;
-  }
-
   .hero-actions,
   .contact-card .primary-button,
   .service-category-card .primary-button {

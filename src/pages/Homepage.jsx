@@ -1,17 +1,6 @@
 import heroRight from '../assets/hero-right.png'
 import './Homepage.css'
 
-const heroThumbnails = [
-  {
-    src: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=720&q=80',
-    alt: 'Consultant in a lounge meeting with a founder',
-  },
-  {
-    src: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=720&q=80',
-    alt: 'Entrepreneur reviewing outreach on a smartphone',
-  },
-]
-
 const aboutImages = [
   {
     src: 'https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=900&q=80',
@@ -187,14 +176,6 @@ function Homepage() {
                 </a>
               </div>
             </div>
-
-            <div className="hero-thumbnails">
-              {heroThumbnails.map((image) => (
-                <article className="image-card image-card--small" key={image.src}>
-                  <img src={image.src} alt={image.alt} />
-                </article>
-              ))}
-            </div>
           </div>
 
           <article className="image-card image-card--hero">
@@ -206,8 +187,8 @@ function Homepage() {
       <section className="services-section" id="services">
         <div className="content-width services-page">
           <div className="services-page__intro">
-            <p className="section-kicker">Services</p>
-            <h2 className="section-subheading">Integrated business, network, and investment services</h2>
+            
+            <h2 className="section-subheading" style={{marginTop: "40px"}}>Integrated business, network, and investment services</h2>
             <p className="section-copy">
               Business Gate Circle brings together consultancy, investor connect, partnerships,
               business setup, and representation support in one coordinated service platform.
