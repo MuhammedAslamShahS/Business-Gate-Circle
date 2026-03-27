@@ -10,9 +10,10 @@
 .contact-section {
   position: relative;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   min-height: 100vh;
   padding: 54px 0;
+  scroll-margin-top: var(--nav-offset);
 }
 
 .hero-section {
@@ -20,20 +21,60 @@
   padding-top: 42px;
 }
 
-.hero-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1.02fr) minmax(360px, 0.98fr);
-  align-items: stretch;
-  gap: 44px;
+.hero-banner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 720px;
+  padding: 72px;
+  overflow: hidden;
+  border-radius: 36px;
+  background-color: #f6f3ee;
+  box-shadow: none;
+}
+
+.hero-banner__slides,
+.hero-banner::before {
+  position: absolute;
+  inset: 0;
+}
+
+.hero-banner__slides {
+  z-index: 0;
+}
+
+.hero-banner__image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center right;
+  opacity: 0;
+  transition: opacity 650ms ease-in-out;
+}
+
+.hero-banner__image.is-active {
+  opacity: 1;
+}
+
+.hero-banner::before {
+  content: '';
+  z-index: 1;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.96) 0%,
+    rgba(255, 255, 255, 0.9) 28%,
+    rgba(255, 255, 255, 0.64) 48%,
+    rgba(255, 255, 255, 0.14) 72%,
+    rgba(255, 255, 255, 0.04) 100%
+  );
 }
 
 .hero-copy {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  min-height: 700px;
-  padding-top: 26px;
-  gap: 24px;
+  position: relative;
+  z-index: 2;
+  max-width: 560px;
 }
 
 .hero-copy__top {
@@ -69,11 +110,6 @@
   object-fit: cover;
 }
 
-.image-card--hero {
-  height: 700px;
-  min-height: 700px;
-}
-
 .about-page {
   display: flex;
   flex-direction: column;
@@ -92,12 +128,17 @@
 .about-network-panel,
 .service-category-card,
 .membership-card,
-.contact-card {
+.membership-benefits-card,
+.membership-category-card,
+.membership-cta-card,
+.contact-page__intro,
+.contact-detail-card,
+.contact-form-card {
   padding: 32px;
   border-radius: 30px;
-  background: linear-gradient(180deg, #ffffff 0%, #f8f5ef 100%);
+  background: #ffffff;
   border: 1px solid rgba(23, 34, 51, 0.08);
-  box-shadow: var(--shadow-soft);
+  box-shadow: none;
 }
 
 .about-page__narrative {
@@ -166,7 +207,7 @@
 .about-values-shell__intro h3,
 .about-network-panel__content h3,
 .service-category-card__header h3,
-.contact-card h3 {
+.contact-form-card h3 {
   margin: 14px 0 0;
   font-family: var(--heading-font);
   font-size: 2rem;
@@ -178,7 +219,7 @@
 .about-network-panel__content > p:not(.section-label),
 .service-category-card__header p,
 .service-category-card__cta p,
-.contact-card p {
+.contact-form-card > p {
   margin: 14px 0 0;
   color: var(--muted-text);
   line-height: 1.72;
@@ -186,19 +227,17 @@
 
 .about-values-shell {
   display: grid;
-  grid-template-columns: minmax(0, 0.62fr) minmax(0, 1fr);
+  grid-template-columns: minmax(280px, 0.9fr) repeat(2, minmax(0, 1fr));
+  grid-template-areas:
+    'intro trust partnership'
+    'excellence growth integrity';
   gap: 24px;
   align-items: start;
 }
 
 .about-values-shell__intro {
+  grid-area: intro;
   padding: 8px 0;
-}
-
-.about-values-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 18px;
 }
 
 .about-value-card h4,
@@ -214,6 +253,26 @@
   margin: 12px 0 0;
   color: var(--muted-text);
   line-height: 1.7;
+}
+
+.about-value-card--trust {
+  grid-area: trust;
+}
+
+.about-value-card--partnership {
+  grid-area: partnership;
+}
+
+.about-value-card--growth {
+  grid-area: growth;
+}
+
+.about-value-card--integrity {
+  grid-area: integrity;
+}
+
+.about-value-card--excellence {
+  grid-area: excellence;
 }
 
 .about-network-panel {
@@ -236,9 +295,10 @@
   position: relative;
   padding: 16px 18px 16px 42px;
   border-radius: 20px;
-  background: rgba(2, 29, 107, 0.04);
+  background: #ffffff;
   color: var(--text-color);
   font-weight: 600;
+  border: 1px solid rgba(23, 34, 51, 0.08);
 }
 
 .about-network-list li::before {
@@ -250,10 +310,6 @@
   height: 10px;
   border-radius: 50%;
   background: var(--accent);
-}
-
-.services-section {
-  align-items: flex-start;
 }
 
 .services-page {
@@ -275,12 +331,34 @@
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 24px;
+  align-items: start;
+}
+
+.service-category-column {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
 
 .service-category-card {
   display: flex;
   flex-direction: column;
   gap: 26px;
+}
+
+.service-category-card__media {
+  overflow: hidden;
+  border-radius: 24px;
+  aspect-ratio: 16 / 9;
+  border: 1px solid rgba(23, 34, 51, 0.08);
+  background: #f5f7fb;
+}
+
+.service-category-card__media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .service-category-card__header {
@@ -336,8 +414,38 @@
   gap: 18px;
   padding: 22px 24px;
   border-radius: 22px;
-  background: rgba(2, 29, 107, 0.03);
+  background: #ffffff;
   border: 1px solid rgba(2, 29, 107, 0.08);
+}
+
+.services-spotlight-card {
+  display: grid;
+  grid-template-rows: minmax(0, 1.2fr) minmax(220px, 0.8fr);
+  gap: 16px;
+  min-height: 760px;
+  padding: 16px;
+  overflow: hidden;
+  border-radius: 30px;
+  border: 1px solid rgba(23, 34, 51, 0.08);
+  background: #eef3fb;
+}
+
+.services-spotlight-card__frame {
+  overflow: hidden;
+  border-radius: 24px;
+  background: #dfe8f5;
+}
+
+.services-spotlight-card__frame--secondary {
+  min-height: 240px;
+}
+
+.services-spotlight-card__image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 
 .membership-shell {
@@ -347,60 +455,379 @@
   align-items: stretch;
 }
 
-.contact-shell {
+.membership-page {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.membership-page__top {
   display: grid;
-  grid-template-columns: minmax(0, 720px);
-  justify-content: center;
+  grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.9fr);
+  gap: 24px;
+  align-items: stretch;
+}
+
+.membership-card__narrative {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 18px;
+}
+
+.membership-benefits-list,
+.membership-category-card__benefits ul {
+  margin: 18px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.membership-benefits-list li,
+.membership-category-card__benefits li {
+  position: relative;
+  padding: 14px 0 14px 28px;
+  border-bottom: 1px solid rgba(23, 34, 51, 0.08);
+  color: var(--text-color);
+  line-height: 1.7;
+}
+
+.membership-benefits-list li::before,
+.membership-category-card__benefits li::before {
+  content: '';
+  position: absolute;
+  top: 23px;
+  left: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.membership-categories-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.membership-category-card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.membership-category-card h3,
+.membership-cta-card h3 {
+  margin: 0;
+  font-family: var(--heading-font);
+  font-size: 1.85rem;
+  line-height: 1.04;
+}
+
+.membership-category-card__audience,
+.membership-cta-card p {
+  margin: 0;
+  color: var(--muted-text);
+  line-height: 1.72;
+}
+
+.membership-category-card__benefits span {
+  display: inline-block;
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.membership-cta-card {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  align-items: flex-start;
+}
+
+.contact-page {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  max-width: 920px;
+  margin: 0 auto;
+  align-items: start;
 }
 
 .membership-card .section-copy {
   margin-top: 16px;
 }
 
-.contact-card {
+.contact-page__intro {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  gap: 24px;
+  align-self: start;
 }
 
-.contact-card .primary-button {
+.contact-page__intro-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.contact-page__intro-copy .section-copy {
+  margin: 0;
+}
+
+.contact-page__highlights,
+.contact-page__details {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.contact-highlight-card,
+.contact-process-card {
+  padding: 24px;
+  border-radius: 24px;
+  border: 1px solid rgba(23, 34, 51, 0.08);
+  background: #f7faff;
+}
+
+.contact-highlight-card h3,
+.contact-process-card h3 {
+  margin: 0;
+  font-family: var(--heading-font);
+  font-size: 1.4rem;
+  line-height: 1.1;
+  color: var(--text-color);
+}
+
+.contact-highlight-card p,
+.contact-process-card__intro p:not(.section-label) {
+  margin: 12px 0 0;
+  color: var(--muted-text);
+  line-height: 1.7;
+}
+
+.contact-page__highlights .contact-highlight-card:last-child,
+.contact-page__details .contact-detail-card:last-child {
+  grid-column: 1 / -1;
+}
+
+.contact-process-card {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  background: #ffffff;
+}
+
+.contact-process-list {
+  display: grid;
+  gap: 14px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.contact-process-list li {
+  position: relative;
+  padding-left: 30px;
+  color: var(--text-color);
+  line-height: 1.7;
+}
+
+.contact-process-list li::before {
+  content: '';
+  position: absolute;
+  top: 11px;
+  left: 0;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.contact-detail-card {
+  padding: 22px 24px;
+}
+
+.contact-detail-card span {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.contact-detail-card strong {
+  display: block;
+  margin-top: 10px;
+  font-size: 1.18rem;
+  line-height: 1.4;
+  color: var(--text-color);
+}
+
+.contact-detail-card p {
+  margin: 10px 0 0;
+  color: var(--muted-text);
+  line-height: 1.7;
+}
+
+.contact-form-card {
+  display: flex;
+  flex-direction: column;
+  align-self: start;
+}
+
+.contact-form-card__intro {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.contact-form-card__intro h3 {
+  margin: 0;
+}
+
+.contact-form-card__intro p {
+  margin: 0;
+  color: var(--muted-text);
+  line-height: 1.72;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
   margin-top: 24px;
-  width: fit-content;
+}
+
+.contact-form__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.form-field--full {
+  width: 100%;
+}
+
+.form-field span {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--text-color);
+}
+
+.form-field input,
+.form-field select,
+.form-field textarea {
+  width: 100%;
+  padding: 15px 16px;
+  border: 1px solid rgba(23, 34, 51, 0.14);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--text-color);
+  outline: none;
+  transition:
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    background-color 180ms ease;
+}
+
+.form-field textarea {
+  min-height: 132px;
+  resize: vertical;
+}
+
+.form-field input::placeholder,
+.form-field textarea::placeholder {
+  color: rgba(99, 101, 111, 0.82);
+}
+
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus {
+  border-color: rgba(2, 29, 107, 0.35);
+  box-shadow: 0 0 0 4px rgba(2, 29, 107, 0.08);
+}
+
+.contact-form__footer {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 20px;
+  margin-top: 2px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(23, 34, 51, 0.08);
+}
+
+.contact-form__footer p {
+  margin: 0;
+  max-width: 460px;
+  color: var(--muted-text);
+  font-size: 0.92rem;
+  line-height: 1.7;
+}
+
+.contact-form__footer .primary-button {
+  flex-shrink: 0;
 }
 
 @media (max-width: 1120px) {
-  .hero-grid,
   .about-page__hero,
   .about-focus-grid,
   .about-values-shell,
   .about-network-panel,
   .service-category-grid,
-  .membership-shell {
+  .membership-page__top,
+  .membership-categories-grid {
     grid-template-columns: 1fr;
   }
 
-  .hero-copy {
-    padding-top: 0;
-    min-height: auto;
-    justify-content: flex-start;
+  .hero-banner {
+    min-height: 620px;
+    padding: 56px 44px;
   }
 
-  .hero-copy__top {
-    gap: 24px;
+  .hero-banner::before {
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.94) 0%,
+      rgba(255, 255, 255, 0.84) 36%,
+      rgba(255, 255, 255, 0.2) 100%
+    );
   }
 
-  .image-card--hero {
-    height: 500px;
-    min-height: 500px;
+  .hero-banner__image {
+    object-position: 68% center;
   }
 
   .about-page__media {
     grid-template-rows: 420px 220px;
   }
 
+  .about-values-shell__intro,
+  .about-value-card {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
   .services-page__intro,
   .services-page__intro .section-copy {
     max-width: none;
+  }
+
+  .contact-page {
+    max-width: none;
+  }
+
+  .hero-section {
+    min-height: auto;
+    padding-bottom: 28px;
   }
 }
 
@@ -413,8 +840,13 @@
     padding: 38px 0;
   }
 
+  .hero-section {
+    min-height: auto;
+    padding-top: 28px;
+    padding-bottom: 20px;
+  }
+
   .stats-grid,
-  .about-values-grid,
   .about-network-list {
     grid-template-columns: 1fr;
   }
@@ -430,25 +862,56 @@
   .about-network-panel,
   .service-category-card,
   .membership-card,
-  .contact-card {
+  .membership-benefits-card,
+  .membership-category-card,
+  .membership-cta-card,
+  .contact-page__intro,
+  .contact-detail-card,
+  .contact-form-card {
     padding: 24px;
+  }
+
+  .services-spotlight-card {
+    min-height: 620px;
+  }
+
+  .contact-highlight-card,
+  .contact-process-card {
+    padding: 20px;
   }
 
   .service-category-card__header {
     grid-template-columns: 1fr;
   }
+
+  .contact-form__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-form__footer {
+    flex-direction: column;
+    align-items: stretch;
+  }
 }
 
 @media (max-width: 620px) {
   .hero-actions,
-  .contact-card .primary-button,
+  .contact-form__footer .primary-button,
   .service-category-card .primary-button {
     width: 100%;
   }
 
-  .image-card--hero {
-    height: 400px;
-    min-height: 400px;
+  .hero-banner {
+    min-height: 480px;
+    padding: 34px 24px;
+  }
+
+  .hero-copy__top {
+    gap: 22px;
+  }
+
+  .hero-banner__image {
+    object-position: 74% center;
   }
 
   .about-page__media {
@@ -457,5 +920,11 @@
 
   .image-card--about-secondary {
     height: 180px;
+  }
+
+  .services-spotlight-card {
+    grid-template-rows: minmax(0, 1fr) minmax(180px, 0.72fr);
+    min-height: 420px;
+    padding: 12px;
   }
 }

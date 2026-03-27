@@ -2,6 +2,8 @@
 
 :root {
   --background: #ffffff;
+  --nav-offset: 56px;
+  --mobile-nav-height: 0px;
   --surface: #fffdf9;
   --surface-muted: #f4ebe1;
   --surface-deep: #f0e5d9;
@@ -23,10 +25,12 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: var(--nav-offset);
 }
 
 body {
   margin: 0;
+  padding-bottom: calc(var(--mobile-nav-height) + env(safe-area-inset-bottom));
   font-family: var(--body-font);
   color: var(--text-color);
   background: var(--background);
