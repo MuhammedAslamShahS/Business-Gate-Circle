@@ -61,6 +61,19 @@ const values = [
     },
 ];
 
+const valueImages = [
+    {
+        id: "collaboration",
+        src: "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=900&q=80",
+        alt: "Business team collaborating around a laptop during a planning session",
+    },
+    {
+        id: "strategy",
+        src: "https://images.unsplash.com/photo-1552581234-26160f608093?auto=format&fit=crop&w=900&q=80",
+        alt: "Team presenting growth strategy and business metrics in a meeting",
+    },
+];
+
 const networkItems = [
     "Business leaders",
     "Investors",
@@ -74,22 +87,21 @@ const serviceCategories = [
     {
         number: "01",
         title: "Business Solutions",
-        image:
-            "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80",
+        image: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80",
         imageAlt: "Business consultants reviewing strategy documents in a meeting",
         summary:
             "Strategic, operational, and setup support for companies, founders, and investors building across the UAE and international markets.",
         items: [
             "Business Consultancy: Strategic advice, planning, and tailored business solutions.",
             "Business Network: Connecting entrepreneurs, companies, investors, and professionals worldwide.",
-            "Investment Facilitation: Matching investors with opportunities and supporting project funding.",
+            "Investment Facilitation:Helping investors find opportunities and supporting project funding.",
             "Project Management: Planning, supervising, and managing projects from idea to execution.",
-            "Business Development: Supporting expansion, growth, and market entry.",
+            "Business Development: Supporting companies to grow, expand, and enter new markets.",
             "Corporate Services: Company formation, licensing, PRO services, and legal procedures.",
-            "Business Setup: Complete setup support in the UAE and international markets.",
-            "Banking & Financial Services Support: Guidance on bank accounts, structure, and documentation.",
-            "Feasibility Study & Market Research: Professional analysis before starting projects or investments.",
-            "Visibility Study & Project Evaluation: Assessing project strength, market position, and risk.",
+            " Business Setup (UAE & International) : Complete support for starting companies locally and globally.",
+            " Banking & Financial Services Support : Assistance with bank accounts, financial structure, and documentation. ",
+            " Feasibility Study & Market Research :Professional analysis before starting projects or investments.",
+            "Visibility Study & Project Evaluation : Analysis of project success, risks, and market position.",
         ],
         ctaTitle: "Build a stronger business foundation",
         ctaText:
@@ -98,16 +110,15 @@ const serviceCategories = [
     },
     {
         number: "02",
-        title: "Business Network & Partnerships",
-        image:
-            "https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=1200&q=80",
+        title: " BUSINESS NETWORK & PARTNERSHIPS ",
+        image: "https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=1200&q=80",
         imageAlt: "Professionals networking during a business conversation",
         summary:
             "Curated connections for members, investors, consultants, and companies looking to grow through trusted relationships.",
         items: [
-            "Business Gate Circle Membership: A professional network for companies, investors, and consultants.",
-            "VIP Business Network: A private circle for investors and selected strategic partners.",
-            "Partnerships & Joint Ventures: Connecting the right parties for new projects and collaborations.",
+            "Business Gate Circle Membership : Business network membership for companies, investors, and consultants",
+            "VIP Business Network:Private circle for investors and partners.",
+            "Partnerships & Joint Ventures: Connecting partners for new projects and collaborations.",
             "International Relations & Global Network: Opening doors to global companies, organizations, and investors.",
             "Business Events & Conferences: Forums, networking meetings, and business delegations.",
         ],
@@ -118,8 +129,7 @@ const serviceCategories = [
     {
         number: "03",
         title: "Investment Facilitation",
-        image:
-            "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1200&q=80",
+        image: "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1200&q=80",
         imageAlt: "Advisors discussing investment reports and financial planning",
         summary:
             "Investment guidance and capital support designed for project owners, investors, startups, and SMEs seeking practical deal momentum.",
@@ -138,8 +148,7 @@ const serviceCategories = [
     {
         number: "04",
         title: "Corporate & Professional Services",
-        image:
-            "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80",
+        image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80",
         imageAlt: "Corporate team collaborating across professional services",
         summary:
             "Professional support services that strengthen operations, reputation, recruitment, compliance, and official processes.",
@@ -158,8 +167,7 @@ const serviceCategories = [
     {
         number: "05",
         title: "Business Representation & Negotiation",
-        image:
-            "https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1200&q=80",
+        image: "https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1200&q=80",
         imageAlt: "Executives in a negotiation and representation meeting",
         summary:
             "Representation, business matching, and deal support for organizations entering critical conversations or international opportunities.",
@@ -221,11 +229,9 @@ const membershipVisuals = {
         },
     ],
     featureCard: {
-        primaryImage:
-            "https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=900&q=80",
+        primaryImage: "https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=900&q=80",
         primaryAlt: "Business professionals in a focused networking conversation",
-        secondaryImage:
-            "https://images.unsplash.com/photo-1552664688-cf412ec27db2?auto=format&fit=crop&w=900&q=80",
+        secondaryImage: "https://images.unsplash.com/photo-1552664688-cf412ec27db2?auto=format&fit=crop&w=900&q=80",
         secondaryAlt: "Strategic partners shaking hands after a successful meeting",
         title: "Access, partnerships, and opportunities",
         points: [
@@ -240,16 +246,14 @@ const membershipCategories = [
     {
         title: "Individual Membership",
         audience: "For professionals, consultants, and entrepreneurs.",
-        image:
-            "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=900&q=80",
+        image: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=900&q=80",
         imageAlt: "Professional member in a networking environment",
         benefits: ["Access to network", "Invitations to events", "Business support", "Collaboration opportunities"],
     },
     {
         title: "Corporate Membership",
         audience: "For companies and business owners.",
-        image:
-            "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=900&q=80",
+        image: "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=900&q=80",
         imageAlt: "Corporate team collaborating in a modern office",
         benefits: [
             "Company promotion",
@@ -262,8 +266,7 @@ const membershipCategories = [
     {
         title: "Investor Membership",
         audience: "For investors looking for opportunities and projects.",
-        image:
-            "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=900&q=80",
+        image: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=900&q=80",
         imageAlt: "Investor reviewing financial opportunities on a tablet",
         benefits: [
             "Access to investment projects",
@@ -276,8 +279,7 @@ const membershipCategories = [
     {
         title: "VIP Circle Membership",
         audience: "Private circle for selected members and partners.",
-        image:
-            "https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=900&q=80",
+        image: "https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=900&q=80",
         imageAlt: "VIP business gathering with premium networking atmosphere",
         benefits: [
             "Priority access to projects",
@@ -290,19 +292,16 @@ const membershipCategories = [
     {
         title: "Partner Membership",
         audience: "For organizations and strategic partners.",
-        image:
-            "https://images.unsplash.com/photo-1552664688-cf412ec27db2?auto=format&fit=crop&w=900&q=80",
+        image: "https://images.unsplash.com/photo-1552664688-cf412ec27db2?auto=format&fit=crop&w=900&q=80",
         imageAlt: "Strategic partners in a handshake and business meeting",
         benefits: ["Joint projects", "Cooperation agreements", "International collaboration", "Events & conferences"],
     },
 ];
 
 const servicesSpotlight = {
-    image:
-        "https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&w=1400&q=80",
+    image: "https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&w=1400&q=80",
     alt: "Business and investment professionals reviewing strategy documents",
-    secondaryImage:
-        "https://images.unsplash.com/photo-1556157382-97eda2d62296?auto=format&fit=crop&w=1400&q=80",
+    secondaryImage: "https://images.unsplash.com/photo-1556157382-97eda2d62296?auto=format&fit=crop&w=1400&q=80",
     secondaryAlt: "Two business professionals shaking hands after a successful meeting",
 };
 
@@ -311,10 +310,11 @@ function getServiceColumns(categories, isStackedLayout) {
         return [categories];
     }
 
-    const columns = [categories.filter((_, index) => index < 4 && index % 2 === 0), categories.filter((_, index) => index < 4 && index % 2 === 1)];
-    const columnWeights = columns.map((column) =>
-        column.reduce((total, category) => total + category.items.length, 0),
-    );
+    const columns = [
+        categories.filter((_, index) => index < 4 && index % 2 === 0),
+        categories.filter((_, index) => index < 4 && index % 2 === 1),
+    ];
+    const columnWeights = columns.map((column) => column.reduce((total, category) => total + category.items.length, 0));
 
     categories.slice(4).forEach((category) => {
         const targetColumnIndex = columnWeights[0] <= columnWeights[1] ? 0 : 1;
@@ -329,7 +329,9 @@ function Homepage() {
     const heroLead =
         "We connect entrepreneurs, investors, consultants, and decision-makers with the right opportunities, partnerships, and capital support to save time, increase efficiency, and accelerate long-term growth.";
     const [activeHeroBanner, setActiveHeroBanner] = useState(0);
-    const [isStackedServiceLayout, setIsStackedServiceLayout] = useState(() => window.innerWidth <= SERVICES_STACK_BREAKPOINT);
+    const [isStackedServiceLayout, setIsStackedServiceLayout] = useState(
+        () => window.innerWidth <= SERVICES_STACK_BREAKPOINT,
+    );
     const serviceColumns = getServiceColumns(serviceCategories, isStackedServiceLayout);
 
     useEffect(() => {
@@ -510,6 +512,12 @@ function Homepage() {
                                 <p>{value.description}</p>
                             </article>
                         ))}
+
+                        {valueImages.map((image) => (
+                            <article className={`about-value-media-card about-value-media-card--${image.id}`} key={image.id}>
+                                <img src={image.src} alt={image.alt} loading="lazy" />
+                            </article>
+                        ))}
                     </div>
 
                     <div className="about-network-panel">
@@ -636,7 +644,6 @@ function Homepage() {
                     <article className="contact-form-card" id="contact-form" tabIndex="-1">
                         <div className="contact-form-card__intro">
                             <h3>Send an enquiry</h3>
-                            <p>Complete the form below and our team will respond with the most relevant next step.</p>
                         </div>
 
                         <form
@@ -648,22 +655,44 @@ function Homepage() {
                             <div className="contact-form__grid">
                                 <label className="form-field">
                                     <span>Full Name</span>
-                                    <input type="text" name="fullName" placeholder="Your full name" />
+                                    <input
+                                        type="text"
+                                        name="fullName"
+                                        placeholder="Your full name"
+                                        autoComplete="name"
+                                    />
                                 </label>
 
                                 <label className="form-field">
                                     <span>Company</span>
-                                    <input type="text" name="company" placeholder="Company or organization" />
+                                    <input
+                                        type="text"
+                                        name="company"
+                                        placeholder="Company or organization"
+                                        autoComplete="organization"
+                                    />
                                 </label>
 
                                 <label className="form-field">
                                     <span>Email Address</span>
-                                    <input type="email" name="email" placeholder="name@company.com" />
+                                    <input
+                                        type="email"
+                                        name="email"
+                                        placeholder="name@company.com"
+                                        autoComplete="email"
+                                        inputMode="email"
+                                    />
                                 </label>
 
                                 <label className="form-field">
                                     <span>Phone Number</span>
-                                    <input type="tel" name="phone" placeholder="+971 ..." />
+                                    <input
+                                        type="tel"
+                                        name="phone"
+                                        placeholder="+971 ..."
+                                        autoComplete="tel"
+                                        inputMode="tel"
+                                    />
                                 </label>
                             </div>
 

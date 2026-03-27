@@ -162,7 +162,7 @@ function Header({ links }) {
             href="#contact"
             onClick={handleAnchorClick('#contact')}
           >
-            Book Now
+            Join Now
           </a>
         </div>
       </header>
