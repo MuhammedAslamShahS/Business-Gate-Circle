@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
 
 :root {
-  --background: #fbf5ee;
+  --background: #ffffff;
   --surface: #fffdf9;
   --surface-muted: #f4ebe1;
   --surface-deep: #f0e5d9;
@@ -29,9 +29,7 @@ body {
   margin: 0;
   font-family: var(--body-font);
   color: var(--text-color);
-  background:
-    radial-gradient(circle at top right, rgba(20, 57, 95, 0.08), transparent 28%),
-    linear-gradient(180deg, #fdf8f1 0%, var(--background) 35%, #f8f0e7 100%);
+  background: var(--background);
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
