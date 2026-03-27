@@ -1,0 +1,366 @@
+.homepage {
+  overflow: hidden;
+}
+
+.hero-section,
+.about-section,
+.services-section,
+.membership-section {
+  position: relative;
+  padding: 54px 0;
+}
+
+.hero-section {
+  padding-top: 42px;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.02fr) minmax(360px, 0.98fr);
+  align-items: stretch;
+  gap: 44px;
+}
+
+.hero-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 700px;
+  padding-top: 26px;
+  gap: 32px;
+}
+
+.hero-copy__top {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.hero-copy__top .section-heading {
+  max-width: 520px;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.hero-thumbnails {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+  max-width: 420px;
+  margin-top: auto;
+}
+
+.image-card {
+  overflow: hidden;
+  border-radius: 28px;
+  background: var(--surface);
+  box-shadow: var(--shadow-soft);
+}
+
+.image-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.image-card--hero {
+  height: 700px;
+  min-height: 700px;
+}
+
+.image-card--small {
+  aspect-ratio: 0.88;
+}
+
+.about-intro {
+  display: grid;
+  grid-template-columns: minmax(120px, 0.25fr) minmax(0, 0.75fr);
+  gap: 34px;
+  align-items: start;
+}
+
+.about-intro__copy {
+  max-width: 660px;
+}
+
+.about-intro__copy .section-copy {
+  margin-top: 18px;
+}
+
+.about-gallery {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr 1fr;
+  gap: 28px;
+  margin-top: 42px;
+  align-items: end;
+}
+
+.about-gallery__stack {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.about-gallery__button {
+  align-self: flex-start;
+}
+
+.image-card--about {
+  height: 260px;
+}
+
+.image-card--tall {
+  height: 320px;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0;
+  margin-top: 42px;
+  border-top: 1px solid var(--line-color);
+  border-bottom: 1px solid var(--line-color);
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.stat-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 30px 20px;
+  text-align: center;
+}
+
+.stat-card + .stat-card {
+  border-left: 1px solid var(--line-color);
+}
+
+.stat-card strong {
+  font-family: var(--heading-font);
+  font-size: clamp(2.4rem, 4vw, 3.35rem);
+  line-height: 0.9;
+}
+
+.stat-card span {
+  max-width: 210px;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: var(--muted-text);
+}
+
+.services-panel,
+.membership-shell {
+  padding: 48px;
+  border-radius: 36px;
+  background: linear-gradient(180deg, rgba(255, 253, 249, 0.92), rgba(244, 235, 225, 0.96));
+  border: 1px solid rgba(23, 34, 51, 0.08);
+  box-shadow: var(--shadow-soft);
+}
+
+.services-panel__header {
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.services-panel__body {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(300px, 0.75fr);
+  gap: 34px;
+  align-items: start;
+  margin-top: 38px;
+}
+
+.services-list {
+  border-top: 1px solid var(--line-color);
+}
+
+.service-row {
+  padding: 22px 0;
+  border-bottom: 1px solid var(--line-color);
+}
+
+.service-row h3,
+.service-preview__content h3,
+.contact-card h3 {
+  margin: 0;
+  font-family: var(--heading-font);
+  font-size: 1.7rem;
+  line-height: 1.05;
+}
+
+.service-row p {
+  max-width: 540px;
+  margin: 10px 0 0;
+  color: var(--muted-text);
+  line-height: 1.65;
+}
+
+.service-row:not(.service-row--active) p {
+  max-width: none;
+  margin-top: 6px;
+  color: rgba(99, 101, 111, 0.78);
+}
+
+.service-preview {
+  padding: 18px;
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(23, 34, 51, 0.08);
+}
+
+.image-card--service {
+  aspect-ratio: 1;
+  border-radius: 24px;
+}
+
+.service-preview__content {
+  margin-top: 18px;
+}
+
+.service-preview__content p {
+  margin: 12px 0 0;
+  color: var(--muted-text);
+  line-height: 1.65;
+}
+
+.service-preview__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 18px;
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.service-preview__link span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #ffffff;
+}
+
+.membership-shell {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.85fr);
+  gap: 24px;
+  align-items: stretch;
+}
+
+.membership-card,
+.contact-card {
+  padding: 32px;
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.86);
+  border: 1px solid rgba(23, 34, 51, 0.08);
+}
+
+.membership-card .section-copy,
+.contact-card p {
+  margin-top: 16px;
+}
+
+.contact-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.contact-card h3 {
+  margin-top: 12px;
+  font-size: 2rem;
+}
+
+.contact-card p {
+  color: var(--muted-text);
+  line-height: 1.75;
+}
+
+.contact-card .primary-button {
+  margin-top: 24px;
+  width: fit-content;
+}
+
+@media (max-width: 1120px) {
+  .hero-grid,
+  .services-panel__body,
+  .membership-shell,
+  .about-intro,
+  .about-gallery {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-copy {
+    padding-top: 0;
+    min-height: auto;
+    justify-content: flex-start;
+  }
+
+  .hero-copy__top {
+    gap: 24px;
+  }
+
+  .image-card--hero {
+    height: 500px;
+    min-height: 500px;
+  }
+
+  .about-intro__copy {
+    max-width: none;
+  }
+}
+
+@media (max-width: 820px) {
+  .hero-section,
+  .about-section,
+  .services-section,
+  .membership-section {
+    padding: 38px 0;
+  }
+
+  .services-panel,
+  .membership-shell {
+    padding: 28px;
+    border-radius: 28px;
+  }
+
+  .hero-thumbnails,
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stat-card + .stat-card {
+    border-left: 0;
+    border-top: 1px solid var(--line-color);
+  }
+}
+
+@media (max-width: 620px) {
+  .hero-thumbnails {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-actions,
+  .contact-card .primary-button {
+    width: 100%;
+  }
+
+  .about-gallery {
+    margin-top: 30px;
+  }
+
+  .image-card--hero {
+    height: 400px;
+    min-height: 400px;
+  }
+}
