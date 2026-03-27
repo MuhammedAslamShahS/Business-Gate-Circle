@@ -18,7 +18,9 @@
 
 .hero-section {
   background: #ffffff;
+  min-height: auto;
   padding-top: 0;
+  padding-bottom: 0;
 }
 
 .contact-section {
@@ -30,7 +32,8 @@
   position: relative;
   display: flex;
   align-items: center;
-  min-height: 720px;
+  min-height: max(720px, calc(100vh - var(--nav-offset)));
+  min-height: max(720px, calc(100svh - var(--nav-offset)));
   padding: 72px;
   overflow: hidden;
   border-radius: 0;
@@ -757,7 +760,6 @@
 .contact-page {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
-  width: min(100%, 1040px);
   margin: 0 auto;
   align-items: start;
 }
@@ -886,6 +888,11 @@
   align-self: start;
 }
 
+.contact-form-card:focus,
+.contact-form-card:focus-visible {
+  outline: none;
+}
+
 .contact-form-card__intro {
   display: grid;
   grid-template-columns: minmax(240px, 0.8fr) minmax(0, 1fr);
@@ -1012,46 +1019,46 @@
 
 @media (min-width: 1024px) {
   .contact-section {
-    padding-top: 26px;
-    padding-bottom: 34px;
+    padding-top: 18px;
+    padding-bottom: 24px;
   }
 
   .contact-form-card {
-    padding: 28px;
+    padding: 24px 28px 20px;
   }
 
   .contact-form-card__intro {
-    padding-bottom: 18px;
+    padding-bottom: 14px;
   }
 
   .contact-form {
-    gap: 18px;
-    margin-top: 18px;
+    gap: 16px;
+    margin-top: 16px;
   }
 
   .contact-form__grid {
-    gap: 16px;
+    gap: 14px 16px;
   }
 
   .form-field {
-    gap: 8px;
+    gap: 7px;
   }
 
   .form-field input,
   .form-field select,
   .form-field textarea {
-    min-height: 54px;
-    padding: 14px 15px;
+    min-height: 52px;
+    padding: 13px 15px;
   }
 
   .form-field textarea {
-    min-height: 148px;
+    min-height: 132px;
   }
 
   .contact-form__footer {
-    gap: 18px;
+    gap: 16px;
     margin-top: 0;
-    padding-top: 14px;
+    padding-top: 12px;
   }
 }
 
@@ -1102,11 +1109,6 @@
   .services-page__intro,
   .services-page__intro .section-copy {
     max-width: none;
-  }
-
-  .contact-page {
-    max-width: none;
-    width: 100%;
   }
 
   .hero-section {
