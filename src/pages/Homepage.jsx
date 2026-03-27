@@ -201,15 +201,56 @@ const membershipBenefits = [
     "Access to investors and companies",
 ];
 
+const membershipVisuals = {
+    benefitsImage: {
+        src: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80",
+        alt: "Business members networking in a collaborative session",
+    },
+    gallery: [
+        {
+            src: "https://images.unsplash.com/photo-1515169067868-5387ec356754?auto=format&fit=crop&w=900&q=80",
+            alt: "Professionals attending a premium networking event",
+        },
+        {
+            src: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=900&q=80",
+            alt: "Consultants and business leaders in a strategy discussion",
+        },
+        {
+            src: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=900&q=80",
+            alt: "Investors and professionals collaborating in a meeting",
+        },
+    ],
+    featureCard: {
+        primaryImage:
+            "https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=900&q=80",
+        primaryAlt: "Business professionals in a focused networking conversation",
+        secondaryImage:
+            "https://images.unsplash.com/photo-1552664688-cf412ec27db2?auto=format&fit=crop&w=900&q=80",
+        secondaryAlt: "Strategic partners shaking hands after a successful meeting",
+        title: "Access, partnerships, and opportunities",
+        points: [
+            "Curated access to investors, consultants, and business leaders",
+            "Private networking opportunities and collaboration-focused meetings",
+            "Support for partnerships, project visibility, and long-term business growth",
+        ],
+    },
+};
+
 const membershipCategories = [
     {
         title: "Individual Membership",
         audience: "For professionals, consultants, and entrepreneurs.",
+        image:
+            "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=900&q=80",
+        imageAlt: "Professional member in a networking environment",
         benefits: ["Access to network", "Invitations to events", "Business support", "Collaboration opportunities"],
     },
     {
         title: "Corporate Membership",
         audience: "For companies and business owners.",
+        image:
+            "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=900&q=80",
+        imageAlt: "Corporate team collaborating in a modern office",
         benefits: [
             "Company promotion",
             "Partnership opportunities",
@@ -221,6 +262,9 @@ const membershipCategories = [
     {
         title: "Investor Membership",
         audience: "For investors looking for opportunities and projects.",
+        image:
+            "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=900&q=80",
+        imageAlt: "Investor reviewing financial opportunities on a tablet",
         benefits: [
             "Access to investment projects",
             "Deal facilitation",
@@ -232,6 +276,9 @@ const membershipCategories = [
     {
         title: "VIP Circle Membership",
         audience: "Private circle for selected members and partners.",
+        image:
+            "https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=900&q=80",
+        imageAlt: "VIP business gathering with premium networking atmosphere",
         benefits: [
             "Priority access to projects",
             "Private networking",
@@ -243,6 +290,9 @@ const membershipCategories = [
     {
         title: "Partner Membership",
         audience: "For organizations and strategic partners.",
+        image:
+            "https://images.unsplash.com/photo-1552664688-cf412ec27db2?auto=format&fit=crop&w=900&q=80",
+        imageAlt: "Strategic partners in a handshake and business meeting",
         benefits: ["Joint projects", "Cooperation agreements", "International collaboration", "Events & conferences"],
     },
 ];
@@ -488,6 +538,13 @@ function Homepage() {
                         <article className="membership-card">
                             <p className="section-kicker">Business Gate Circle Network</p>
                             <h2 className="section-subheading">Business Gate Circle Membership</h2>
+                            <div className="membership-card__gallery">
+                                {membershipVisuals.gallery.map((image) => (
+                                    <article className="membership-card__gallery-item" key={image.src}>
+                                        <img src={image.src} alt={image.alt} loading="lazy" />
+                                    </article>
+                                ))}
+                            </div>
                             <div className="membership-card__narrative">
                                 {membershipIntroParagraphs.map((paragraph) => (
                                     <p className="section-copy" key={paragraph}>
@@ -498,6 +555,13 @@ function Homepage() {
                         </article>
 
                         <article className="membership-benefits-card">
+                            <div className="membership-benefits-card__media">
+                                <img
+                                    src={membershipVisuals.benefitsImage.src}
+                                    alt={membershipVisuals.benefitsImage.alt}
+                                    loading="lazy"
+                                />
+                            </div>
                             <p className="section-label">Why Join Business Gate Circle</p>
                             <ul className="membership-benefits-list">
                                 {membershipBenefits.map((benefit) => (
@@ -510,6 +574,9 @@ function Homepage() {
                     <div className="membership-categories-grid">
                         {membershipCategories.map((category) => (
                             <article className="membership-category-card" key={category.title}>
+                                <div className="membership-category-card__media">
+                                    <img src={category.image} alt={category.imageAlt} loading="lazy" />
+                                </div>
                                 <h3>{category.title}</h3>
                                 <p className="membership-category-card__audience">{category.audience}</p>
                                 <div className="membership-category-card__benefits">
@@ -522,6 +589,33 @@ function Homepage() {
                                 </div>
                             </article>
                         ))}
+
+                        <article className="membership-feature-card">
+                            <div className="membership-feature-card__media">
+                                <article className="membership-feature-card__image-shell membership-feature-card__image-shell--primary">
+                                    <img
+                                        src={membershipVisuals.featureCard.primaryImage}
+                                        alt={membershipVisuals.featureCard.primaryAlt}
+                                        loading="lazy"
+                                    />
+                                </article>
+                                <article className="membership-feature-card__image-shell membership-feature-card__image-shell--secondary">
+                                    <img
+                                        src={membershipVisuals.featureCard.secondaryImage}
+                                        alt={membershipVisuals.featureCard.secondaryAlt}
+                                        loading="lazy"
+                                    />
+                                </article>
+                            </div>
+                            <div className="membership-feature-card__content">
+                                <h3>{membershipVisuals.featureCard.title}</h3>
+                                <ul className="membership-feature-card__points">
+                                    {membershipVisuals.featureCard.points.map((point) => (
+                                        <li key={point}>{point}</li>
+                                    ))}
+                                </ul>
+                            </div>
+                        </article>
                     </div>
 
                     <article className="membership-cta-card">
