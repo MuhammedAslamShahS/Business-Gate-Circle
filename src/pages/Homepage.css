@@ -106,6 +106,10 @@
   gap: 14px;
 }
 
+.hero-actions--mobile {
+  display: none;
+}
+
 .image-card {
   overflow: hidden;
   border-radius: 28px;
@@ -1228,9 +1232,32 @@
     width: 100%;
   }
 
+  .hero-actions--banner {
+    display: none;
+  }
+
+  .hero-actions--mobile {
+    display: flex;
+    margin-top: 24px;
+  }
+
+  .hero-copy__lead {
+    display: none;
+  }
+
+  .hero-banner__slides {
+    display: none;
+  }
+
+  .hero-banner::before {
+    content: none;
+  }
+
   .hero-banner {
-    min-height: 480px;
+    align-items: flex-start;
+    min-height: auto;
     padding: 34px 24px;
+    background: #ffffff;
   }
 
   .hero-copy__top {

@@ -328,6 +328,17 @@ function getServiceColumns(categories, isStackedLayout) {
 function Homepage() {
     const heroLead =
         "We connect entrepreneurs, investors, consultants, and decision-makers with the right opportunities, partnerships, and capital support to save time, increase efficiency, and accelerate long-term growth.";
+    const renderHeroActions = (className = "") => (
+        <div className={`hero-actions ${className}`.trim()}>
+            <a className="primary-button" href="#contact">
+                Join the Circle
+                <span className="arrow-icon">+</span>
+            </a>
+            <a className="secondary-button" href="#services">
+                Explore Services
+            </a>
+        </div>
+    );
     const [activeHeroBanner, setActiveHeroBanner] = useState(0);
     const [isStackedServiceLayout, setIsStackedServiceLayout] = useState(
         () => window.innerWidth <= SERVICES_STACK_BREAKPOINT,
@@ -373,18 +384,11 @@ function Homepage() {
                                 <p className="section-kicker">Growth, Capital Raises, and Strategic Connections</p>
                                 <h1 className="section-heading">We Always Focus on Your Growth.</h1>
                                 <p className="section-copy hero-copy__lead">{heroLead}</p>
-                                <div className="hero-actions">
-                                    <a className="primary-button" href="#contact">
-                                        Join the Circle
-                                        <span className="arrow-icon">+</span>
-                                    </a>
-                                    <a className="secondary-button" href="#services">
-                                        Explore Services
-                                    </a>
-                                </div>
+                                {renderHeroActions("hero-actions--banner")}
                             </div>
                         </div>
                     </div>
+                    {renderHeroActions("hero-actions--mobile")}
                 </div>
             </section>
 

@@ -3,6 +3,72 @@ import './Header.css'
 
 const SCROLL_GAP = 20
 const MOBILE_NAV_BREAKPOINT = 980
+const MOBILE_NAV_HEIGHT = 104
+
+function MobileNavIcon({ href }) {
+  const commonProps = {
+    viewBox: '0 0 24 24',
+    fill: 'none',
+    stroke: 'currentColor',
+    strokeWidth: '1.9',
+    strokeLinecap: 'round',
+    strokeLinejoin: 'round',
+    'aria-hidden': 'true',
+    focusable: 'false',
+  }
+
+  switch (href) {
+    case '#home':
+      return (
+        <svg {...commonProps}>
+          <path d="M3.5 10.5 12 4l8.5 6.5" />
+          <path d="M6.5 9.5V20h11V9.5" />
+          <path d="M10 20v-5h4v5" />
+        </svg>
+      )
+    case '#services':
+      return (
+        <svg {...commonProps}>
+          <path d="M5 7h14" />
+          <path d="M5 12h14" />
+          <path d="M5 17h14" />
+          <circle cx="8" cy="7" r="1.5" fill="currentColor" stroke="none" />
+          <circle cx="16" cy="12" r="1.5" fill="currentColor" stroke="none" />
+          <circle cx="10" cy="17" r="1.5" fill="currentColor" stroke="none" />
+        </svg>
+      )
+    case '#about':
+      return (
+        <svg {...commonProps}>
+          <circle cx="12" cy="8" r="3.25" />
+          <path d="M6.5 19.25c1.3-2.7 3.3-4.05 5.5-4.05s4.2 1.35 5.5 4.05" />
+        </svg>
+      )
+    case '#membership':
+      return (
+        <svg {...commonProps}>
+          <path d="M12 4.5 14.2 9l5 .7-3.6 3.5.85 5-4.45-2.35-4.45 2.35.85-5L4.8 9.7l5-.7L12 4.5Z" />
+        </svg>
+      )
+    case '#contact':
+      return (
+        <svg {...commonProps}>
+          <path d="M7.5 5.5h9a2.5 2.5 0 0 1 2.5 2.5v8a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 5 16V8a2.5 2.5 0 0 1 2.5-2.5Z" />
+          <path d="m6 8 6 5 6-5" />
+        </svg>
+      )
+    default:
+      return null
+  }
+}
+
+function getMobileNavLabel(link) {
+  if (link.href === '#membership') {
+    return 'Members'
+  }
+
+  return link.label
+}
 
 function Header({ links }) {
   const headerRef = useRef(null)
@@ -20,7 +86,7 @@ function Header({ links }) {
     document.documentElement.style.setProperty('--nav-offset', `${headerHeight + SCROLL_GAP}px`)
     document.documentElement.style.setProperty(
       '--mobile-nav-height',
-      window.innerWidth <= MOBILE_NAV_BREAKPOINT ? '92px' : '0px',
+      window.innerWidth <= MOBILE_NAV_BREAKPOINT ? `${MOBILE_NAV_HEIGHT}px` : '0px',
     )
   }, [])
 
@@ -127,7 +193,7 @@ function Header({ links }) {
     scrollToSection(hash)
   }
 
-  const renderNavLinks = (linkClassName) =>
+  const renderNavLinks = (linkClassName, variant = 'desktop') =>
     links.map((link) => (
       <a
         key={link.href}
@@ -136,7 +202,16 @@ function Header({ links }) {
         aria-current={activeHash === link.href ? 'page' : undefined}
         onClick={handleAnchorClick(link.href)}
       >
-        {link.label}
+        {variant === 'mobile' ? (
+          <>
+            <span className="mobile-bottom-nav__icon">
+              <MobileNavIcon href={link.href} />
+            </span>
+            <span className="mobile-bottom-nav__label">{getMobileNavLabel(link)}</span>
+          </>
+        ) : (
+          link.label
+        )}
       </a>
     ))
 
@@ -168,7 +243,9 @@ function Header({ links }) {
       </header>
 
       <nav className="mobile-bottom-nav" aria-label="Mobile navigation">
-        <div className="mobile-bottom-nav__inner">{renderNavLinks('mobile-bottom-nav__link')}</div>
+        <div className="mobile-bottom-nav__inner">
+          {renderNavLinks('mobile-bottom-nav__link', 'mobile')}
+        </div>
       </nav>
     </>
   )
